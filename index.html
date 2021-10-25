@@ -18,8 +18,8 @@
       <header>
         <h1>Formulaire d'inscription</h1>
       </header>
-      <div class="card" style="width: 18rem">
-        <form onsubmit="">
+      <div class="card formStyle" style="width: 18rem">
+        <form id="formClient">
           <div class="mb-3">
             <label for="firstname">Nom : </label>
             <input type="text" id="firstname" name="firstname" required />
@@ -78,8 +78,40 @@
             <label for="password">Mot de passe : </label>
             <input type="password" id="password" name="password" required />
           </div>
-          <button type="submit" class="btn btn-primary">Valider</button>
+
+          <div class="mb-3">
+            <label for="passwordConfirm">Confirmer le mot de passe : </label>
+            <input
+              type="password"
+              id="passwordConfirm"
+              name="passwordConfirm"
+              required
+            />
+          </div>
+
+          <div class="center">
+            <button type="submit" id="submit" class="btn btn-primary">
+              Valider
+            </button>
+          </div>
         </form>
+
+        <span class="invalid-feedback"></span>;
+
+        <script>
+          $("form").submit(function (event) {
+            //Pour ne pas reload la page
+            event.preventDefault();
+            //Si le mdp est différent de la confirmation
+            if ($("#passwordConfirm").val() !== $("#password").val()) {
+              //Code provenant de la doc jquery (je ne connais pas personnellement la techno)
+              $("span")
+                .text("Les mot de passe ne correspondent pas !")
+                .show()
+                .fadeOut(1000);
+            }
+          });
+        </script>
       </div>
     </div>
   </body>
