@@ -102,6 +102,7 @@
           $("form").submit(function (event) {
             //Pour ne pas reload la page
             event.preventDefault();
+
             //Si le mdp est différent de la confirmation
             if ($("#passwordConfirm").val() !== $("#password").val()) {
               //Code provenant de la doc jquery (je ne connais pas personnellement la techno)
